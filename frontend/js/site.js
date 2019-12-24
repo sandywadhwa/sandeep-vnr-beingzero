@@ -1,7 +1,7 @@
 // JQUERY makes our life very easy
 
 //1.  how to make backend call
-$.getJSON('/data', function(d){
+$.getJSON('/api/data', function(d){
     //alert(JSON.stringify(d));
 
     $('#name').text(d.name);
