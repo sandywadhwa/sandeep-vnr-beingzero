@@ -9,6 +9,7 @@ app.use(express.static('frontend'))
 app.get('/', (req, res) => res.sendFile(__dirname+'/frontend/html/home.html'))
 app.get('/login', (req, res) => res.send('Login'))
 app.get('/register', (req, res) => res.send('Register'))
+app.get('/resume', (req, res) => res.sendFile(__dirname+'/frontend/html/resume.html'))
 
 var student = {"name" : "Being Zero",
                "college" : "VNRVJIET",
