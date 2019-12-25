@@ -1,15 +1,26 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
+const bodyParser = require('body-parser')
+
+// https://expressjs.com/en/resources/middleware/body-parser.html
 
 // this line tells express to serve
 // js or css files from frontend folder
 app.use(express.static('frontend'))
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+
 app.get('/', (req, res) => res.sendFile(__dirname+'/frontend/html/home.html'))
 app.get('/login', (req, res) => res.send('Login'))
 app.get('/register', (req, res) => res.send('Register'))
 app.get('/resume', (req, res) => res.sendFile(__dirname+'/frontend/html/resume.html'))
+app.get('/pages/:pagename', (req, res) => res.sendFile(__dirname+'/frontend/html/'+ req.params.pagename+'.html'))
 
 var student = {"name" : "Being Zero",
                "college" : "VNRVJIET",
