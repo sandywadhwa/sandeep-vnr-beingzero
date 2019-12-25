@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
-const bodyParser = require('body-parser')
 
 // https://expressjs.com/en/resources/middleware/body-parser.html
 
@@ -9,11 +8,10 @@ const bodyParser = require('body-parser')
 // js or css files from frontend folder
 app.use(express.static('frontend'))
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
 
-// parse application/json
-app.use(bodyParser.json())
+// https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c
+app.use(express.urlencoded({extended: true})); 
+app.use(express.json());   
 
 
 app.get('/', (req, res) => res.sendFile(__dirname+'/frontend/html/home.html'))
